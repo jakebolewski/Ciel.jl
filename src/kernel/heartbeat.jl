@@ -13,6 +13,6 @@ const c_heartbeat_thread = cfunction(heartbeat_thread, Void, (Ptr{Void},))
 
 const thread_id = Array(Int, 128) # sizeof(uv_thread_t) <= 8 on Linux, OSX, Win
 
-start_heartbeat(sock::ZMQ.Socket) = 
+start_heartbeat!(sock::ZMQ.Socket) = 
     ccall(:uv_thread_create, Cint, (Ptr{Int}, Ptr{Void}, Ptr{Void}),
           thread_id, c_heartbeat_thread, sock.data)
