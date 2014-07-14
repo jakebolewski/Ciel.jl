@@ -1,5 +1,7 @@
 module Ciel
 
-# package code goes here
+include("kernel.jl")
+include("engine.jl")
+include("controller.jl") 
 
 end # module
