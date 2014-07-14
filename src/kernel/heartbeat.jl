@@ -6,7 +6,7 @@
 
 # entry point for new thread
 function heartbeat_thread(sock::Ptr{Void}) 
-    ccall((:zmq_device, ZMQ.zmq), Cint, (Cint, Ptr{Void}, Ptr{Void}), 2, sock, sock)
+    ccall((:zmq_device, ZMQ.zmq), Cint, (Cint, Ptr{Void}, Ptr{Void}), ZMQ.FORWARDER, sock, sock)
     return 
 end
 const c_heartbeat_thread = cfunction(heartbeat_thread, Void, (Ptr{Void},))
